@@ -4,41 +4,7 @@ const americanToBritishTitles = require("./american-to-british-titles.js")
 const britishOnly = require('./british-only.js')
 
 class Translator {
-  static translateButtonClickHanlder(e) {
-    let translation;
-    if(document.getElementById('text-input').value) {
-      document.getElementById('error-msg').innerHTML = "";
-      let input = document.getElementById('text-input').value;
-      let selection = document.getElementById('locale-select').value
-      if(selection === 'american-to-british') {
-        translation = Translator.translateAmericanToBritish(
-          input,
-          true
-        )
-      } else {
-        translation = Translator.translateBritishToAmerican(
-          input,
-          true
-        )
-      }
-      // Check if there have been no changes
-      if(translation !== input) {
-        document.getElementById('translated-sentence').innerHTML = translation;
-      } else {
-        document.getElementById('translated-sentence')
-          .innerHTML = "Everything looks good to me!"
-      }
-    } else {
-      document.getElementById('error-msg').innerHTML = "Error: No text to translate.";
-    }
-  }
-
-  static clearButtonClickHandler(e) {
-    document.getElementById('translated-sentence').innerHTML = "";
-    document.getElementById('error-msg').innerHTML = "";
-  }
-
-
+  
   static replaceCurry(word, replacement, highlight, adjustCase = false)  {
     if(adjustCase) {
       replacement = replacement.replace(/^([a-z])/ig, letter => letter.toUpperCase());
