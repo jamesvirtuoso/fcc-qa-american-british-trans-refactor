@@ -41,7 +41,12 @@ class Translator {
     }
 
     // Time Replacement, colon to period replacement
-    input = input.replace(/(?<=\d):(?=\d)/gi, '.');
+    if(highlight) {
+      input = input.replace(/(\d+):(\d+)/gi, '<span class="highlight">$1.$2</span>');
+    } else {
+      input = input.replace(/(?<=\d):(?=\d)/gi, '.');
+    }
+    
 
     // Uppercase start of sentence
     input = input.replace(/^([a-z])/ig, letter => letter.toUpperCase());
